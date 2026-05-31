@@ -15,6 +15,7 @@ body {
 }
 
 .card {
+
   border: none;
   border-radius: 15px;
   transition: 0.3s;
@@ -65,4 +66,14 @@ footer {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.home-image {
+  height: 280px;
+  object-fit: contain;
 }
