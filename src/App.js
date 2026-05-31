@@ -11,11 +11,11 @@ import "./css/style.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProductDetails from "./pages/ProductDetails"
-import CartContext from"./context/CartContext"
+
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Techzone-Web">
       <div className="d-flex flex-column min-vh-100">
          <Navbar />
       <div className="flex-grow-1">
