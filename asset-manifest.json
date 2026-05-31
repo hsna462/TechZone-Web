@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TechZone-Web/static/css/main.6fb164c2.css",
+    "main.js": "/TechZone-Web/static/js/main.143c503d.js",
+    "static/js/453.cc607e55.chunk.js": "/TechZone-Web/static/js/453.cc607e55.chunk.js",
+    "index.html": "/TechZone-Web/index.html",
+    "main.6fb164c2.css.map": "/TechZone-Web/static/css/main.6fb164c2.css.map",
+    "main.143c503d.js.map": "/TechZone-Web/static/js/main.143c503d.js.map",
+    "453.cc607e55.chunk.js.map": "/TechZone-Web/static/js/453.cc607e55.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6fb164c2.css",
+    "static/js/main.143c503d.js"
+  ]
+}
