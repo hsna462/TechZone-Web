@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/TechZone-Web/static/css/main.6fb164c2.css",
-    "main.js": "/TechZone-Web/static/js/main.143c503d.js",
+    "main.css": "/TechZone-Web/static/css/main.6fdcfeb3.css",
+    "main.js": "/TechZone-Web/static/js/main.f6e7bcf0.js",
     "static/js/453.cc607e55.chunk.js": "/TechZone-Web/static/js/453.cc607e55.chunk.js",
+    "static/media/smartwatch.jpg": "/TechZone-Web/static/media/smartwatch.74f8eae5e67794f16147.jpg",
+    "static/media/gaming-laptop.jpg": "/TechZone-Web/static/media/gaming-laptop.9b2c5a171073c2208062.jpg",
+    "static/media/keyboard.jpg": "/TechZone-Web/static/media/keyboard.f3ab53e81db54931f225.jpg",
+    "static/media/powerbank.jpg": "/TechZone-Web/static/media/powerbank.610c058f1ea13bfdca20.jpg",
+    "static/media/charger.jpg": "/TechZone-Web/static/media/charger.1e72cf692eb3d589eea6.jpg",
+    "static/media/headphones.jpg": "/TechZone-Web/static/media/headphones.a5b5bc47481c6791a6c0.jpg",
+    "static/media/laptop.jpg": "/TechZone-Web/static/media/laptop.480999142c5e9707b565.jpg",
+    "static/media/phone.jpg": "/TechZone-Web/static/media/phone.3e95fbcb6323f22430f1.jpg",
     "index.html": "/TechZone-Web/index.html",
-    "main.6fb164c2.css.map": "/TechZone-Web/static/css/main.6fb164c2.css.map",
-    "main.143c503d.js.map": "/TechZone-Web/static/js/main.143c503d.js.map",
+    "main.6fdcfeb3.css.map": "/TechZone-Web/static/css/main.6fdcfeb3.css.map",
+    "main.f6e7bcf0.js.map": "/TechZone-Web/static/js/main.f6e7bcf0.js.map",
     "453.cc607e55.chunk.js.map": "/TechZone-Web/static/js/453.cc607e55.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6fb164c2.css",
-    "static/js/main.143c503d.js"
+    "static/css/main.6fdcfeb3.css",
+    "static/js/main.f6e7bcf0.js"
   ]
 }
