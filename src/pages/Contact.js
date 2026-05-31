@@ -29,7 +29,7 @@ function Contact() {
   return (
     <div className="container my-5">
 
-      {/* TITLE */}
+      
       <div className="text-center mb-4">
         <h2>Contact Us</h2>
         <p className="text-muted">
@@ -37,7 +37,7 @@ function Contact() {
         </p>
       </div>
 
-      {/* FORM */}
+      
       <div className="row justify-content-center">
         <div className="col-md-6">
 
