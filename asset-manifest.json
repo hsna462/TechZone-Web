@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/TechZone-Web/static/css/main.6fdcfeb3.css",
-    "main.js": "/TechZone-Web/static/js/main.f6e7bcf0.js",
+    "main.js": "/TechZone-Web/static/js/main.d3861470.js",
     "static/js/453.cc607e55.chunk.js": "/TechZone-Web/static/js/453.cc607e55.chunk.js",
     "static/media/smartwatch.jpg": "/TechZone-Web/static/media/smartwatch.74f8eae5e67794f16147.jpg",
     "static/media/gaming-laptop.jpg": "/TechZone-Web/static/media/gaming-laptop.9b2c5a171073c2208062.jpg",
@@ -13,11 +13,11 @@
     "static/media/phone.jpg": "/TechZone-Web/static/media/phone.3e95fbcb6323f22430f1.jpg",
     "index.html": "/TechZone-Web/index.html",
     "main.6fdcfeb3.css.map": "/TechZone-Web/static/css/main.6fdcfeb3.css.map",
-    "main.f6e7bcf0.js.map": "/TechZone-Web/static/js/main.f6e7bcf0.js.map",
+    "main.d3861470.js.map": "/TechZone-Web/static/js/main.d3861470.js.map",
     "453.cc607e55.chunk.js.map": "/TechZone-Web/static/js/453.cc607e55.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6fdcfeb3.css",
-    "static/js/main.f6e7bcf0.js"
+    "static/js/main.d3861470.js"
   ]
 }
