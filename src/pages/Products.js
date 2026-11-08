@@ -1,117 +1,92 @@
+
 import { useEffect, useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { Data, categories } from "../data/Data";
+import ProductCard from "../components/ProductCard";
 
-import laptop from "../assets/laptop.jpg";
-import phone from "../assets/phone.jpg";
-import monitor from "../assets/monitor.jpg";
-import mouse from "../assets/mouse.jpg";
-import keyboard from "../assets/keyboard.jpg";
-import gamingLaptop from "../assets/gaming-laptop.jpg";
-import phone2 from "../assets/phone2.jpg";
-import headphones from "../assets/headphones.jpg";
-import smartwatch from "../assets/smartwatch.jpg";
-import powerbank from "../assets/powerbank.jpg";
-import charger from "../assets/charger.jpg";
-import mousepad from "../assets/mousepad.jpg";
+const Products = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const category = searchParams.get("category") || "";
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("");
+  const [visibleProducts, setVisibleProducts] = useState(Data);
 
-function Products() {
-  const [searchParams] = useSearchParams();
-  const category = searchParams.get("category");
-
-  const initialProducts = [
-    { id: 1, name: "Laptop", price: 800, category: "laptops", image: laptop },
-    { id: 2, name: "Phone", price: 600, category: "phones", image: phone },
-    { id: 3, name: "Monitor", price: 150, category: "accessories", image: monitor },
-    { id: 4, name: "Mouse", price: 25, category: "accessories", image: mouse },
-    { id: 5, name: "Keyboard", price: 70, category: "accessories", image: keyboard },
-    { id: 6, name: "Gaming Laptop", price: 1200, category: "gaming", image: gamingLaptop },
-    { id: 7, name: "Phone Pro", price: 900, category: "phones", image: phone2 },
-    { id: 8, name: "Headphones", price: 200, category: "accessories", image: headphones },
-    { id: 9, name: "Smartwatch", price: 100, category: "accessories", image: smartwatch },
-    { id: 10, name: "Powerbank", price: 50, category: "accessories", image: powerbank },
-    { id: 11, name: "Charger", price: 20, category: "accessories", image: charger },
-    { id: 12, name: "Mousepad", price: 10, category: "accessories", image: mousepad }
-  ];
-
-  const [products, setProducts] = useState(initialProducts);
-
-  
   useEffect(() => {
-    if (category) {
-      setProducts(
-        initialProducts.filter((p) => p.category === category)
-      );
-    } else {
-      setProducts(initialProducts);
-    }
-  }, [category]);
+    let result = Data.filter((product) => {
+      const matchesCategory = !category || product.category === category;
+      const matchesSearch = product.name.toLowerCase().includes(search.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
 
-  
-  const handleSort = (e) => {
-    const value = e.target.value;
+    if (sort === "low") result = [...result].sort((a, b) => a.price - b.price);
+    if (sort === "high") result = [...result].sort((a, b) => b.price - a.price);
 
-    let sorted = [...products];
+    setVisibleProducts(result);
+  }, [category, search, sort]);
 
-    if (value === "low") {
-      sorted.sort((a, b) => a.price - b.price);
-    } else if (value === "high") {
-      sorted.sort((a, b) => b.price - a.price);
-    }
-
-    setProducts(sorted);
+  const handleCategoryChange = (event) => {
+    const value = event.target.value;
+    if (value) setSearchParams({ category: value });
+    else setSearchParams({});
   };
 
   return (
-    <div className="container my-5">
-
-      <h2 className="text-center mb-4">All Products</h2>
-
-      {/* SORT */}
-      <div className="d-flex justify-content-end mb-3">
-        <select className="form-select w-25" onChange={handleSort}>
-          <option value="">Sort by</option>
-          <option value="low">Price Low to High</option>
-          <option value="high">Price High to Low</option>
-        </select>
+    <main className="container section-space">
+      <div className="section-heading text-center mb-4">
+        <span className="eyebrow">THE TECHZONE COLLECTION</span>
+        <h1>All products</h1>
+        <p>Explore our range of technology and accessories.</p>
       </div>
 
-      
-      <div className="row g-4">
-
-        {products.map((product) => (
-          <div className="col-md-3" key={product.id}>
-
-            <div className="card h-100 text-center">
-
-              <img
-                src={product.image}
-                alt={product.name}
-                className="card-img-top product-image"
-              />
-
-              <div className="card-body">
-
-                <h6>{product.name}</h6>
-                <p>${product.price}</p>
-
-                <Link
-                  to={`/product/${product.id}`}
-                  className="btn btn-dark btn-sm"
-                >
-                  View
-                </Link>
-
-              </div>
-
-            </div>
-
-          </div>
-        ))}
-
+      <div className="filter-panel row g-3 align-items-end mb-4">
+        <div className="col-12 col-md-5">
+          <label htmlFor="productSearch" className="form-label">Search products</label>
+          <input id="productSearch" className="form-control" type="search"
+            placeholder="Search by product name..." value={search}
+            onChange={(event) => setSearch(event.target.value)} />
+        </div>
+        <div className="col-6 col-md-4">
+          <label htmlFor="categoryFilter" className="form-label">Category</label>
+          <select id="categoryFilter" className="form-select" value={category} onChange={handleCategoryChange}>
+            <option value="">All categories</option>
+            {categories.map((item) => <option key={item.value} value={item.value}>{item.name}</option>)}
+          </select>
+        </div>
+        <div className="col-6 col-md-3">
+          <label htmlFor="sortProducts" className="form-label">Sort by price</label>
+          <select id="sortProducts" className="form-select" value={sort} onChange={(event) => setSort(event.target.value)}>
+            <option value="">Recommended</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+          </select>
+        </div>
       </div>
 
-    </div>
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <span className="results-count">{visibleProducts.length} products found</span>
+        {(category || search || sort) && (
+          <button className="btn btn-sm btn-link text-dark" onClick={() => {
+            setSearch(""); setSort(""); setSearchParams({});
+          }}>Clear filters</button>
+        )}
+      </div>
+
+      {visibleProducts.length ? (
+        <div className="row g-4">
+          {visibleProducts.map((product) => <ProductCard key={product.id} product={product} />)}
+        </div>
+      ) : (
+        <div className="empty-state">
+          <div className="empty-state-icon">⌕</div>
+          <h3>No products found</h3>
+          <p>Try another search term or choose a different category.</p>
+          <button className="btn btn-dark" onClick={() => { setSearch(""); setSort(""); setSearchParams({}); }}>
+            Clear filters
+          </button>
+        </div>
+      )}
+    </main>
   );
-}
+};
 
 export default Products;

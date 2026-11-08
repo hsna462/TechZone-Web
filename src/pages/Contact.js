@@ -1,89 +1,58 @@
 import { useState } from "react";
 
-function Contact() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
+const emptyForm = { name: "", email: "", message: "" };
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
+const Contact = () => {
+  const [form, setForm] = useState(emptyForm);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm((previousForm) => ({ ...previousForm, [name]: value }));
+    setSubmitted(false);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Message sent successfully!");
-    console.log(form);
-
-    setForm({
-      name: "",
-      email: "",
-      message: ""
-    });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Demo only: connect this handler to a backend or email service to deliver messages.
+    console.log("Contact form submission:", form);
+    setSubmitted(true);
+    setForm(emptyForm);
   };
 
   return (
-    <div className="container my-5">
-
-      
-      <div className="text-center mb-4">
-        <h2>Contact Us</h2>
-        <p className="text-muted">
-          We usually reply within 24 hours
-        </p>
+    <main className="container section-space">
+      <div className="section-heading text-center mb-5">
+        <span className="eyebrow">WE'RE HERE TO HELP</span>
+        <h1>Contact us</h1>
+        <p>Have a question? Send our team a message.</p>
       </div>
-
-      
       <div className="row justify-content-center">
-        <div className="col-md-6">
-
-          <form className="card p-4 shadow-sm" onSubmit={handleSubmit}>
-
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              className="form-control mb-3"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="form-control mb-3"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-
-            <textarea
-              name="message"
-              placeholder="Message"
-              rows="5"
-              className="form-control mb-3"
-              value={form.message}
-              onChange={handleChange}
-              required
-            />
-
-            <button type="submit" className="btn btn-dark w-100">
-              Send Message
-            </button>
-
+        <div className="col-lg-7 col-xl-6">
+          <form className="form-panel" onSubmit={handleSubmit}>
+            {submitted && <div className="alert alert-success" role="status">Your message has been recorded in this demo. Thank you!</div>}
+            <div className="mb-3">
+              <label htmlFor="contactName" className="form-label">Your name</label>
+              <input id="contactName" className="form-control" type="text" name="name"
+                value={form.name} onChange={handleChange} placeholder="Enter your name" required />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="contactEmail" className="form-label">Email address</label>
+              <input id="contactEmail" className="form-control" type="email" name="email"
+                value={form.email} onChange={handleChange} placeholder="name@example.com" required />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="contactMessage" className="form-label">Message</label>
+              <textarea id="contactMessage" className="form-control" name="message" rows="5"
+                value={form.message} onChange={handleChange} placeholder="How can we help?" required />
+            </div>
+            <button type="submit" className="btn btn-dark w-100">Send message</button>
+          
           </form>
-
         </div>
       </div>
-
-    </div>
+    </main>
   );
-}
+};
 
 export default Contact;
